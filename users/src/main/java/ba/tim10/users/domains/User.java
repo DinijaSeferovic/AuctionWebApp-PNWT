@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -23,25 +27,32 @@ public class User {
 
     @Id
     @GeneratedValue
+    private long id;
+
     @UuidGenerator
-    private UUID id;
+    private UUID uuid;
 
     @Column(nullable = false)
+    @NotBlank(message = "First name cannot be empty")
     private String firstName;
 
     @Column(nullable = false)
+    @NotBlank(message = "Last name cannot be empty")
     private String lastName;
 
     @Column
+    @Past(message = "Date of birth must be in the past")
     private Date dateOfBirth;
 
     @Column
     private String phoneNumber;
 
     @Column(nullable = false)
+    @Email(message = "Email must be valid")
     private String email;
 
     @Column(nullable = false)
+    @NotBlank(message = "Password name cannot be empty")
     private String password;
 
     @Column
