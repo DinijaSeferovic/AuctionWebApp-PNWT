@@ -18,7 +18,7 @@ public class UsersApplication {
 		SpringApplication.run(UsersApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner demo(UserRepository repository) {
 		return (args) -> {
 			repository.save(new User("user1@email.com", "Prvi", "User", "user1", true));
@@ -35,6 +35,6 @@ public class UsersApplication {
 			log.info(user.getPassword());
 			log.info("");
 		};
-	}
+	}*/
 
 }

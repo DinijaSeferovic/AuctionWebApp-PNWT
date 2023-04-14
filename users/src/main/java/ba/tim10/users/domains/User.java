@@ -10,7 +10,6 @@ import org.hibernate.annotations.UuidGenerator;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -69,6 +68,12 @@ public class User {
 
 
     public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(long id, String email, String password) {
+        this.id = id;
         this.email = email;
         this.password = password;
     }

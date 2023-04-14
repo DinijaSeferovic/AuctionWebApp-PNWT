@@ -1,14 +1,15 @@
 package ba.tim10.users.controllers;
 
 import ba.tim10.users.domains.User;
+import ba.tim10.users.dto.LogInDTO;
 import ba.tim10.users.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.rmi.ServerException;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -16,6 +17,8 @@ import java.util.UUID;
 public class UserController {
 
     private final UserService userService;
+
+    PasswordEncoder encoder;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -27,7 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable UUID id) {
+    public User getUserById(@PathVariable long id) {
         return userService.findById(id);
     }
 
@@ -40,5 +43,11 @@ public class UserController {
         } else {
             return new ResponseEntity<>(user, HttpStatus.CREATED);
         }
+    }
+
+    @PutMapping("/change-password")
+    public  ResponseEntity changePassword(@RequestBody LogInDTO account){
+        userService.changePassword(account.getEmail(), encoder.encode(account.getPassword()));
+        return ResponseEntity.ok("Password is successfully changed");
     }
 }

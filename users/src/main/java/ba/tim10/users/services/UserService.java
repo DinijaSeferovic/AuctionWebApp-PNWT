@@ -2,11 +2,13 @@ package ba.tim10.users.services;
 
 import ba.tim10.users.domains.User;
 import ba.tim10.users.repositories.UserRepository;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -20,7 +22,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findById(UUID id) {
+    public User findById(long id) {
         return userRepository.findById(id);
     }
 
@@ -34,5 +36,17 @@ public class UserService {
 
     public Boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);
+    }
+
+    @Transactional
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with email: " + email));
+        return UserDetailsImpl.build(user);
+    }
+
+
+    public void changePassword(String email, String password) {
+        userRepository.changePassword(email, password);
     }
 }
