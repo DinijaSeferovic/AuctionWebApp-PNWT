@@ -5,8 +5,8 @@ import ba.tim10.users.dto.LogInDTO;
 import ba.tim10.users.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.rmi.ServerException;
 import java.util.List;
@@ -47,7 +47,7 @@ public class UserController {
 
     @PutMapping("/change-password")
     public  ResponseEntity changePassword(@RequestBody LogInDTO account){
-        userService.changePassword(account.getEmail(), encoder.encode(account.getPassword()));
+        userService.changePassword(account.getEmail(), account.getPassword());
         return ResponseEntity.ok("Password is successfully changed");
     }
 }
