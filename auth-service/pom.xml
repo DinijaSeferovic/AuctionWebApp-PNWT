@@ -29,9 +29,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.eureka.common</groupId>
-            <artifactId>spring-eureka-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <dependency>
