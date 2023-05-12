@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @RestController
 @ResponseBody
-@RequestMapping("/api/category")
+@RequestMapping("/item/category")
 public class CategoryController {
 
     @Autowired

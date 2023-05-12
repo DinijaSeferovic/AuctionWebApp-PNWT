@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @RestController
 @ResponseBody
-@RequestMapping("/api/bid")
+@RequestMapping("/item/bid")
 public class BidController {
 
     @Autowired

@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @RestController
 @ResponseBody
-@RequestMapping("/api/transaction")
+@RequestMapping("/payment/transaction")
 public class TransactionController {
 
     @Autowired

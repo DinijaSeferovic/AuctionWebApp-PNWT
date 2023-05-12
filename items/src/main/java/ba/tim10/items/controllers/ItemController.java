@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @RestController
 @ResponseBody
-@RequestMapping("/api/item")
+@RequestMapping("/item/item")
 public class ItemController {
 
     @Autowired
