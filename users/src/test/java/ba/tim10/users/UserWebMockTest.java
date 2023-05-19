@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -26,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(UserController.class)
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 public class UserWebMockTest {
 
     @Autowired
@@ -45,7 +46,7 @@ public class UserWebMockTest {
         List<User> users = Arrays.asList(new User("john@example.com", "John"), new User("jane@example.com", "Jane"));
         given(userService.findAll()).willReturn(users);
 
-        mockMvc.perform(get("/api/users"))
+        mockMvc.perform(get("/user"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{\"email\":\"john@example.com\", \"password\": \"John\"}," +
                         "{\"email\":\"jane@example.com\", \"password\": \"Jane\"}]"));
@@ -53,12 +54,12 @@ public class UserWebMockTest {
 
     @Test
     public void testGetUserById() throws Exception {
-        User user = new User(1L, "john@example.com", "John");
-        given(userService.findById(1L)).willReturn(user);
+        User user = new User((UUID.fromString("f53d2c7b-dcae-46ce-ba1e-f74b7f7070df")), "john@example.com", "John");
+        given(userService.findById(UUID.fromString("f53d2c7b-dcae-46ce-ba1e-f74b7f7070df"))).willReturn(user);
 
-        mockMvc.perform(get("/api/users/1"))
+        mockMvc.perform(get("/user/f53d2c7b-dcae-46ce-ba1e-f74b7f7070df"))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"id\":1,\"email\":\"john@example.com\", \"password\": \"John\"}"));
+                .andExpect(content().json("{\"id\":\"f53d2c7b-dcae-46ce-ba1e-f74b7f7070df\",\"email\":\"john@example.com\", \"password\": \"John\"}"));
     }
 
     @Test
@@ -68,7 +69,7 @@ public class UserWebMockTest {
         newUser.setPassword("password");
 
         User savedUser = new User();
-        savedUser.setId(1L);
+        savedUser.setId(UUID.fromString("f53d2c7b-dcae-46ce-ba1e-f74b7f7070df"));
         savedUser.setFirstName("john");
 
         given(userService.saveOrUpdate(any(User.class))).willReturn(savedUser);
@@ -78,7 +79,7 @@ public class UserWebMockTest {
         String requestJson = objectMapper.writeValueAsString(newUser);
         String expectedJson = objectMapper.writeValueAsString(savedUser);
 
-        mockMvc.perform(post("/api/users")
+        mockMvc.perform(post("/user")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isCreated())
@@ -100,7 +101,7 @@ public class UserWebMockTest {
         }).when(userService).changePassword(email, password);
 
         mockMvc.perform(MockMvcRequestBuilders
-                        .put("/api/users/change-password")
+                        .put("/user/change-password")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"email\": \"" + email + "\", \"password\": \"" + password + "\"}"))
                 .andExpect(status().isOk())

@@ -3,15 +3,17 @@ package ba.tim10.users.services;
 import ba.tim10.users.domains.User;
 import ba.tim10.users.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository){
@@ -22,7 +24,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findById(long id) {
+    public User findById(UUID id) {
         return userRepository.findById(id);
     }
 
@@ -33,6 +35,8 @@ public class UserService {
     public User saveOrUpdate(User user) {
         return userRepository.saveAndFlush(user);
     }
+
+    public void createAccount(User user) { userRepository.save(user); }
 
     public Boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);

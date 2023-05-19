@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UuidGenerator;
 
 import javax.validation.constraints.Email;
@@ -25,11 +26,9 @@ import java.util.UUID;
 public class User {
 
     @Id
+    @Column(nullable = false)
     @GeneratedValue
-    private long id;
-
-    @UuidGenerator
-    private UUID uuid;
+    private UUID id;
 
     @Column(nullable = false)
     @NotBlank(message = "First name cannot be empty")
@@ -72,7 +71,7 @@ public class User {
         this.password = password;
     }
 
-    public User(long id, String email, String password) {
+    public User(UUID id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;

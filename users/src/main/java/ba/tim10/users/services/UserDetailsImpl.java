@@ -10,9 +10,7 @@ import java.util.*;
 
 public class UserDetailsImpl implements UserDetails {
 
-    private long id;
-
-    private UUID uuid;
+    private UUID id;
 
     private String email;
 
@@ -35,9 +33,8 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(long id, UUID uuid, String email, String password, String firstName, String lastName, Date dateOfBirth, String phoneNumber, String picture, Boolean active, Set<Role> roles) {
+    public UserDetailsImpl(UUID id, String email, String password, String firstName, String lastName, Date dateOfBirth, String phoneNumber, String picture, Boolean active, Set<Role> roles) {
         this.id = id;
-        this.uuid = uuid;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -49,7 +46,7 @@ public class UserDetailsImpl implements UserDetails {
         this.roles = roles;
     }
 
-    public UserDetailsImpl(int id, String email, String password) {
+    public UserDetailsImpl(UUID id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -59,7 +56,6 @@ public class UserDetailsImpl implements UserDetails {
 
         return new UserDetailsImpl(
                 user.getId(),
-                user.getUuid(),
                 user.getEmail(),
                 user.getPassword(),
                 user.getFirstName(),
@@ -76,12 +72,8 @@ public class UserDetailsImpl implements UserDetails {
         return authorities;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public UUID getUuid() {
-        return uuid;
     }
 
     public String getEmail() {
