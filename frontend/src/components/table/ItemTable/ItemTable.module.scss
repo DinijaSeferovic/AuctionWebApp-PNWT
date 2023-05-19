@@ -1,0 +1,35 @@
+@import "../../../_variables.scss";
+
+.container {
+	display: flex;
+	flex-direction: column;
+
+	&_buttons {
+		display: flex;
+		flex-direction: row;
+		align-self: flex-end;
+		margin-right: 60px;
+		margin-top: 30px;
+	}
+
+	&_table {
+		overflow: auto;
+		height: 550px;
+	}
+
+	&_bottom {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		background-color: $bg;
+		padding: 20px 90px 20px 60px;
+		margin: 0px 60px 24px 30px;
+		border-width: 0px 1px 1px 1px;
+		border-style: solid;
+		border-color: $secondary;
+		&_showing {
+			min-width: 150px;
+		}
+	}
+}

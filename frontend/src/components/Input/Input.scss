@@ -1,0 +1,199 @@
+@import "../../_variables.scss";
+
+.input_field {
+	&_wrapper {
+		display: flex;
+		flex-wrap: wrap;
+
+		&_icon {
+			position: absolute;
+			right: 34%;
+			margin-top: 95px;
+		}
+	}
+
+	input {
+		border: 0px;
+		padding-left: 20px;
+
+		&:focus {
+			outline: none;
+		}
+		&::placeholder {
+			font-family: "Lato";
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 20px;
+		}
+	}
+
+	.input_field_label {
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 27px;
+		color: $dark;
+		margin-bottom: 16px;
+		margin-top: 32px;
+	}
+
+	.input_field_xsmall {
+		width: 250px;
+		height: 60px;
+
+		@media screen and (max-width: 750px) {
+			width: 180px;
+		}
+
+		&_form {
+			background: $bg;
+			border: 1px solid $secondary;
+
+			&_error {
+				border: 1px solid $error;
+			}
+
+			&_correct {
+				border: 1px solid $correct;
+			}
+		}
+	}
+
+	.input_field_small {
+		width: 330px;
+		height: 49px;
+
+		@media screen and (max-width: 750px) {
+			width: 250px;
+		}
+
+		&_form {
+			background: $bg;
+			border: 1px solid $secondary;
+
+			&_error {
+				border: 1px solid $error;
+			}
+
+			&_correct {
+				border: 1px solid $correct;
+			}
+		}
+	}
+
+	.input_field_medium {
+		width: 450px;
+		height: 50px;
+
+		@media screen and (max-width: 750px) {
+			width: 200px;
+		}
+
+		@media screen and (min-width: 750px) and (max-width: 1250px) {
+			width: 300px;
+		}
+
+		&_form {
+			background: $bg;
+			border: 1px solid $secondary;
+
+			&_error {
+				border: 1px solid $error;
+			}
+
+			&_correct {
+				border: 1px solid $correct;
+			}
+		}
+	}
+
+	.input_field_large {
+		width: 550px;
+		height: 60px;
+
+		@media screen and (max-width: 750px) {
+			width: 200px;
+		}
+
+		@media screen and (min-width: 750px) and (max-width: 1250px) {
+			width: 400px;
+		}
+
+		&_form {
+			background: $bg;
+			border: 1px solid $secondary;
+
+			&_error {
+				border: 1px solid $error;
+			}
+
+			&_correct {
+				border: 1px solid $correct;
+			}
+		}
+	}
+
+	&_error {
+		display: flex;
+		justify-content: space-between;
+
+		&_info {
+			display: flex;
+			gap: 15px;
+
+			&_message {
+				font-family: $Lato;
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 27px;
+
+				&_incorrect {
+					color: $error;
+					margin-top: 5px;
+				}
+
+				&_correct {
+					color: $correct;
+					margin-top: 5px;
+				}
+
+				&_strength {
+					color: $dark;
+					margin-top: 5px;
+				}
+			}
+
+			&_tooltip {
+				margin-top: 10px;
+			}
+		}
+
+		&_strength {
+			width: 120px;
+			height: 15px;
+			margin-top: 10px;
+			background-color: $border;
+
+			.weak {
+				width: 40px;
+				height: 15px;
+				background-color: $error;
+			}
+
+			.medium {
+				width: 80px;
+				height: 15px;
+				background-color: $medium;
+			}
+
+			.strong {
+				width: 120px;
+				height: 15px;
+				background-color: $correct;
+			}
+		}
+	}
+}

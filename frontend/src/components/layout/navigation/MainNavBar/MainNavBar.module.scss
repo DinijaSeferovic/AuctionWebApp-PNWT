@@ -1,0 +1,102 @@
+@import "../../../../_variables.scss";
+
+.mainnavbar {
+	background: $light;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1.5fr 1fr;
+	align-items: center;
+
+	@media screen and (max-width: 1000px) {
+		grid-template-columns: 1fr 2fr;
+		grid-template-rows: 1fr;
+	}
+
+	@media screen and (max-width: 650px) {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		justify-items: center;
+	}
+
+	&_logo {
+		margin-top: 15px;
+
+		@media screen and (max-width: 650px) {
+			justify-self: center;
+		}
+
+		@media screen and (min-width: 650px) and (max-width: 1300px) {
+			justify-self: right;
+			padding-right: 10%;
+		}
+
+		@media screen and (min-width: 1300px) {
+			justify-self: right;
+			padding-right: 18%;
+		}
+	}
+
+	&_searchbar {
+		margin-top: 15px;
+
+		@media screen and (max-width: 650px) {
+			justify-self: center;
+		}
+
+		@media screen and (min-width: 650px) and (max-width: 1300px) {
+			justify-self: center;
+		}
+
+		@media screen and (min-width: 1300px) {
+			justify-self: right;
+			padding-right: 5%;
+		}
+	}
+
+	&_navbar {
+		margin-top: 15px;
+
+		@media screen and (max-width: 650px) {
+			justify-self: center;
+		}
+
+		@media screen and (min-width: 650px) and (max-width: 1000px) {
+			justify-self: center;
+			padding-left: 10%;
+		}
+
+		@media screen and (min-width: 1000px) and (max-width: 1300px) {
+			padding-left: 10%;
+		}
+
+		nav {
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				li {
+					display: inline-block;
+
+					.navlink {
+						font-family: $Lato;
+						font-style: normal;
+						font-weight: 300;
+						font-size: 16px;
+						line-height: 19px;
+						color: $dark;
+						margin-right: 30px;
+						text-decoration: none;
+
+						&_active {
+							color: $primary;
+							margin-right: 30px;
+							text-decoration: none;
+							font-weight: 700;
+						}
+					}
+				}
+			}
+		}
+	}
+}

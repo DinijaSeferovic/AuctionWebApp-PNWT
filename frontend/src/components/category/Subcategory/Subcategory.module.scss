@@ -1,0 +1,15 @@
+@import "../../../_variables.scss";
+
+.subcategory {
+	&_list {
+		margin-bottom: 15px;
+		&_title {
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 17px;
+			color: $text;
+		}
+	}
+}

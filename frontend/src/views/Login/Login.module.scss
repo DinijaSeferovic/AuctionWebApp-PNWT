@@ -1,0 +1,49 @@
+@import "../../_variables.scss";
+.container {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 80px;
+	gap: 40px;
+
+	&_login {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 16px;
+		border: 1px solid $border;
+		background: $light;
+
+		&_header {
+			display: flex;
+			background: $bg;
+			width: 100%;
+			height: 75px;
+			justify-content: center;
+			align-items: center;
+
+			&_text {
+				font-family: $Lato;
+				font-style: normal;
+				font-weight: 700;
+				font-size: 24px;
+				line-height: 29px;
+				letter-spacing: 0.84px;
+				color: $darker;
+			}
+		}
+
+		&_forgotpassword {
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 19px;
+			color: $primary;
+			margin-bottom: 50px;
+			text-decoration: none;
+		}
+	}
+}

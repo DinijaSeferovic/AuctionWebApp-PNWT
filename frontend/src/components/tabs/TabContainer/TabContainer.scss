@@ -1,0 +1,42 @@
+@import "../../../_variables.scss";
+
+.tabs_large {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&_list {
+		width: 1120px;
+		display: flex;
+		flex-direction: row;
+		list-style: none;
+		border-bottom: 1px solid $secondary;
+		margin-bottom: 32px;
+		margin-top: 32px;
+	}
+
+	&_content {
+		margin-bottom: 60px;
+	}
+}
+
+.tabs_small {
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+
+	&_list {
+		width: 540px;
+		display: flex;
+		flex-direction: row;
+		list-style: none;
+		border-bottom: 1px solid $secondary;
+		margin-bottom: 32px;
+		margin-top: 32px;
+		gap: 50px;
+	}
+
+	&_content {
+		margin-bottom: 60px;
+	}
+}

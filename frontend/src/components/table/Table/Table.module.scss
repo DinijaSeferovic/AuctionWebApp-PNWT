@@ -1,0 +1,46 @@
+@import "../../../_variables.scss";
+
+table {
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: $secondary;
+	margin: 0px 43px 0px 30px;
+
+	td {
+		padding-left: 50px;
+		padding-top: 20px;
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 24px;
+
+		.namefield {
+			display: flex;
+			flex-direction: row;
+			gap: 16px;
+			align-items: center;
+
+			&_text {
+				&_id {
+					font-size: 10px;
+					margin-top: 4px;
+					color: $primary;
+				}
+			}
+		}
+		.pricefield {
+			color: $text;
+		}
+		.greenratefield {
+			color: $correct;
+			display: flex;
+			flex-direction: row;
+			gap: 3px;
+
+			&_arrow {
+				line-height: 14px;
+			}
+		}
+	}
+}

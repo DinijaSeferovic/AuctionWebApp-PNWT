@@ -1,0 +1,75 @@
+@import "../../_variables.scss";
+
+.icon {
+	&_arrow {
+		width: 10px;
+		height: 5px;
+
+		&_unlinked {
+			width: 10px;
+			height: 5px;
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+
+	&_xxsmall {
+		width: 8px;
+		height: 2px;
+
+		&_unlinked {
+			width: 8px;
+			height: 2px;
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+
+	&_xsmall {
+		width: 10px;
+		height: 10px;
+
+		&_unlinked {
+			width: 10px;
+			height: 10px;
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+
+	&_small {
+		width: 17px;
+		height: 17px;
+
+		&_unlinked {
+			width: 17px;
+			height: 17px;
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+
+	&_medium {
+		width: 24px;
+		height: 24px;
+
+		&_unlinked {
+			width: 24px;
+			height: 24px;
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+
+	&_large {
+		width: 170px;
+		height: 56px;
+
+		&_unlinked {
+			width: 170px;
+			height: 56px;
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+@import "../../_variables.scss";
+
+.container {
+	margin: 0px 64px 64px 64px;
+	form {
+		.button {
+			padding-top: 64px;
+			float: right;
+			margin-bottom: 20px;
+		}
+	}
+}

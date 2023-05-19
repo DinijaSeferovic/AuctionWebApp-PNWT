@@ -1,0 +1,10 @@
+@import "../../../_variables.scss";
+
+.logobar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid $border;
+	height: 90px;
+	width: 100%;
+}

@@ -1,0 +1,56 @@
+@import "../../../_variables.scss";
+
+.tab {
+	&_listitem_large {
+		margin-right: 64px;
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 24px;
+		letter-spacing: 0.84px;
+		color: $darker;
+		padding-bottom: 16px;
+		cursor: pointer;
+
+		&_active {
+			margin-right: 40px;
+			width: 165px;
+			border-bottom: 3px solid $primary;
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 24px;
+			line-height: 29px;
+			letter-spacing: 0.84px;
+			color: $darker;
+			padding-bottom: 16px;
+			cursor: pointer;
+		}
+	}
+
+	&_listitem_small {
+		padding: 0 20px 16px 20px;
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 20px;
+		color: $darker;
+		cursor: pointer;
+
+		&_active {
+			padding-left: 20px;
+			padding-right: 20px;
+			border-bottom: 3px solid $primary;
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 20px;
+			color: $primary;
+			padding-bottom: 16px;
+			cursor: pointer;
+		}
+	}
+}

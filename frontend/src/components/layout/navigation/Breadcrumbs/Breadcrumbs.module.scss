@@ -1,0 +1,35 @@
+@import "../../../../variables";
+
+.breadcrumbs {
+	display: flex;
+
+	&_content {
+		display: flex;
+
+		&_link {
+			font-family: "Lato";
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			color: $text;
+			line-height: 20px;
+			text-decoration: none;
+
+			&_active {
+				font-family: "Lato";
+				font-style: normal;
+				font-weight: 700;
+				font-size: 16px;
+				color: $primary;
+				text-decoration: none;
+				line-height: 19px;
+			}
+		}
+
+		&_icon {
+			padding-right: 10px;
+			padding-left: 10px;
+			cursor: default;
+		}
+	}
+}

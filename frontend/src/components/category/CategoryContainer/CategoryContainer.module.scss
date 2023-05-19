@@ -1,0 +1,29 @@
+@import "../../../_variables.scss";
+
+.category_container {
+	width: 260px;
+	height: auto;
+
+	ul {
+		list-style: none;
+	}
+
+	&_title {
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 24px;
+		color: $primary;
+		padding: 16px;
+		text-transform: uppercase;
+	}
+
+	&_item {
+		border-bottom: 1px solid $secondary;
+
+		&_link {
+			text-decoration: none;
+		}
+	}
+}

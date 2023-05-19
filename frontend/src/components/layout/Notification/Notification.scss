@@ -1,0 +1,63 @@
+@import "../../../_variables.scss";
+
+.notif {
+	&_success {
+		background-color: $correct_bg;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+		height: 60px;
+		margin-top: 8px;
+		padding: 20px 202px;
+
+		&_text {
+			color: $correct;
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 19px;
+		}
+	}
+
+	&_warning {
+		background-color: $warning_bg;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+		height: 60px;
+		margin-top: 8px;
+		padding: 20px 202px;
+
+		&_text {
+			color: $warning;
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 19px;
+		}
+	}
+
+	&_info {
+		background-color: $info_bg;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+		height: 60px;
+		margin-top: 8px;
+		padding: 20px 202px;
+
+		&_text {
+			color: $primary;
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 19px;
+		}
+	}
+}

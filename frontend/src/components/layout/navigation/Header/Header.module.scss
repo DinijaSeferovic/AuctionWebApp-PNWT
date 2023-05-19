@@ -1,0 +1,51 @@
+@import "../../../../_variables.scss";
+
+.header {
+	background: $dark;
+	height: 40px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	flex-basis: 0;
+	align-items: center;
+
+	&_socialmedia {
+		padding-left: 13%;
+		position: absolute;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			li {
+				display: inline-block;
+				padding-right: 20px;
+			}
+		}
+	}
+
+	&_righttext {
+		color: $text;
+		font-weight: 700;
+		font-size: 14px;
+		font-family: "Lato";
+		font-style: normal;
+		right: 13.5%;
+		position: absolute;
+
+		&_registration,
+		&_login {
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 14px;
+			line-height: 17px;
+			color: $light;
+			text-decoration: none;
+			margin-left: 24px;
+			margin-right: 24px;
+		}
+	}
+}

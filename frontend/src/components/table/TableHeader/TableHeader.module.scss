@@ -1,0 +1,33 @@
+@import "../../../_variables.scss";
+
+.headername {
+	display: flex;
+	flex-direction: row;
+	padding: 27px 50px 27px 50px;
+	background-color: $bg;
+
+	&_name {
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 27px;
+		text-align: center;
+		color: $dark;
+	}
+	&_icons {
+		width: 10px;
+		margin-left: 15px;
+		cursor: pointer;
+
+		&_up {
+			margin-top: 4px;
+			line-height: 2px;
+		}
+
+		&_down {
+			margin-top: 3px;
+			line-height: 2px;
+		}
+	}
+}

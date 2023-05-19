@@ -1,0 +1,16 @@
+@import "../../../_variables.scss";
+
+.category {
+	padding: 16px;
+	background: $light;
+	cursor: pointer;
+
+	&_title {
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 24px;
+		color: $dark;
+	}
+}
