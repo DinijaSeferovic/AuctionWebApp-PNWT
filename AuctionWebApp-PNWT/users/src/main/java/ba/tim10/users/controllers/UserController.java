@@ -16,20 +16,21 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.rmi.ServerException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/user")
+@RequestMapping("/auth")
 public class UserController {
 
     private final UserService userService;
@@ -172,6 +173,36 @@ public class UserController {
                 user.getLastName(),
                 user.getEmail(),
                 roles));
+    }
+
+    @PostMapping("/send-reset-email")
+    public ResponseEntity sendResetEmail(@RequestParam String email ){
+        if (!userService.existsByEmail(email)) {
+            throw new UsernameNotFoundException("Email address not found");
+        }
+        Properties properties = System.getProperties();
+        properties.put("mail.smtp.auth", true);
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", 587);
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(emailAddress, emailPassword);
+            }
+        });
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(emailAddress));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+            message.setSubject("Auction App Reset Password");
+            String token = jwtUtils.generatePasswordToken(email);
+            message.setText("Reset password link for your Auction App profile has been generated. To reset your password, follow the instructions on the following link: "+appLink+"/change-password?token="+token);
+            Transport.send(message);
+        } catch (MessagingException m) {
+            return new ResponseEntity("Email sending failed", HttpStatus.BAD_REQUEST);
+        }
+        return ResponseEntity.ok("Email is successfully sent");
     }
 
     @PutMapping("/change-password")

@@ -1,7 +1,7 @@
 import api from "../utils/api";
 
 const logIn = (email, password) => {
-	return api.post("/api/auth/login", { email, password }).then((response) => {
+	return api.post("/login", { email, password }).then((response) => {
 		return response.data;
 	});
 };
@@ -9,7 +9,7 @@ const logIn = (email, password) => {
 const register = (firstName, lastName, email, password) => {
 	const roles = ["user"];
 	return api
-		.post("/api/auth/register", {
+		.post("/register", {
 			firstName,
 			lastName,
 			email,
@@ -22,25 +22,21 @@ const register = (firstName, lastName, email, password) => {
 };
 
 const getUserByToken = (token) => {
-	return api.get(`api/auth/user?token=${token}`).then((response) => {
+	return api.get(`/user?token=${token}`).then((response) => {
 		return response.data;
 	});
 };
 
 const sendResetEmail = (email) => {
-	return api
-		.post(`api/auth/send-reset-email?email=${email}`)
-		.then((response) => {
-			return response.data;
-		});
+	return api.post(`/send-reset-email?email=${email}`).then((response) => {
+		return response.data;
+	});
 };
 
 const changePassword = (email, password) => {
-	return api
-		.put("api/auth/change-password", { email, password })
-		.then((response) => {
-			return response.data;
-		});
+	return api.put("/change-password", { email, password }).then((response) => {
+		return response.data;
+	});
 };
 
 export default {

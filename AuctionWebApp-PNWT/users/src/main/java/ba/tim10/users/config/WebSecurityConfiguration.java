@@ -57,10 +57,12 @@ public class WebSecurityConfiguration {
         authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder());
         authenticationManager = authenticationManagerBuilder.build();
         http.cors().and().csrf().disable()
+                .authorizeRequests()
+                .requestMatchers("/auth/**").permitAll()
+                .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests()
-                .anyRequest().permitAll().and().authenticationManager(authenticationManager);
+                .authenticationManager(authenticationManager);
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class).exceptionHandling().authenticationEntryPoint(unauthorizedHandler);
         return http.build();
     }

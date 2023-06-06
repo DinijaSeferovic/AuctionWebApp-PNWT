@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @RestController
 @ResponseBody
-@RequestMapping("/item/item")
+@RequestMapping("/item")
 public class ItemController {
 
     @Autowired
@@ -20,6 +20,11 @@ public class ItemController {
     @GetMapping("/{id}")
     public Optional<Item> findById(@PathVariable UUID id) {
         return repository.findById(id);
+    }
+
+    @GetMapping("/say")
+    public String say() {
+        return "Hajde pls";
     }
 
 }

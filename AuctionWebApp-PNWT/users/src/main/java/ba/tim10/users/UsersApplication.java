@@ -39,13 +39,3 @@ public class UsersApplication {
 	}*/
 
 }
-
-@Configuration
-class RestTemplateConfig {
-
-	@Bean
-	@LoadBalanced
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
-}
