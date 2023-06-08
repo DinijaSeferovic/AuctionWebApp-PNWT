@@ -1,0 +1,74 @@
+@import "../../_variables.scss";
+
+.pagination-container {
+	display: flex;
+	list-style-type: none;
+
+	.pagination-item {
+		padding: 0 11px;
+		height: 32px;
+		text-align: center;
+		margin: auto 4px;
+		color: $primary;
+		display: flex;
+		box-sizing: border-box;
+		border: 2px solid $primary;
+		align-items: center;
+		letter-spacing: 0.01em;
+		line-height: 1.43;
+		font-size: 13px;
+		min-width: 32px;
+
+		&.dots:hover {
+			background-color: transparent;
+			cursor: default;
+		}
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.04);
+			cursor: pointer;
+		}
+
+		&.selected {
+			background-color: $primary;
+			color: $light;
+		}
+
+		.arrow {
+			&::before {
+				position: relative;
+				content: "";
+				display: inline-block;
+				width: 0.4em;
+				height: 0.4em;
+				border-right: 0.15em solid $primary;
+				border-top: 0.15em solid $primary;
+			}
+
+			&.left {
+				transform: rotate(-135deg) translate(-50%);
+			}
+
+			&.right {
+				transform: rotate(45deg);
+				margin-right: 2.5px;
+			}
+		}
+
+		&.disabled {
+			pointer-events: none;
+			.arrow::before {
+				border-right: 0.15em solid $text;
+				border-top: 0.15em solid $text;
+			}
+
+			&:hover {
+				background-color: transparent;
+				cursor: default;
+			}
+		}
+
+		&.nav {
+			border: 0px;
+		}
+	}
+}

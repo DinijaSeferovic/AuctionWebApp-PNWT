@@ -1,0 +1,71 @@
+@import "../../../_variables.scss";
+
+.container {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 36px;
+	width: 740px;
+	height: auto;
+
+	&_info {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding: 0px;
+		gap: 16px;
+		width: 345px;
+		height: 100%;
+
+		&_name {
+			order: 0;
+
+			&_link {
+				font-family: $Lato;
+				font-style: normal;
+				font-weight: 400;
+				font-size: 32px;
+				line-height: 50px;
+				color: $darker;
+				text-decoration: none;
+			}
+		}
+
+		&_price {
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 32px;
+			line-height: 50px;
+			color: $primary;
+			order: 1;
+		}
+
+		&_description {
+			width: 350px;
+			height: auto;
+			margin-bottom: 80px;
+			font-family: "Lato";
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 24px;
+			color: $text;
+			order: 2;
+			flex-grow: 1;
+		}
+
+		&_button {
+			order: 3;
+			justify-self: flex-end;
+		}
+	}
+
+	&_image {
+		width: 360px;
+		height: 420px;
+		object-fit: cover;
+	}
+}

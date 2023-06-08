@@ -3,11 +3,14 @@ import "./App.scss";
 import Footer from "./components/layout/Footer/Footer";
 import Header from "./components/layout/navigation/Header/Header";
 import UserProvider from "./contexts/UserProvider";
+import AdminPanel from "./views/AdminPanel/AdminPanel";
 import ChangePassword from "./views/ChangePassword/ChangePassword";
 import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import Registration from "./views/Registration/Registration";
 import ResetPassword from "./views/ResetPassword/ResetPassword";
+import Shop from "./views/Shop/Shop";
+import SingleProduct from "./views/SingleProduct/SingleProduct";
 import AboutUs from "./views/Static/AboutUs/AboutUs";
 import NotFound from "./views/Static/NotFound/NotFound";
 import PrivacyAndPolicy from "./views/Static/PrivacyAndPolicy/PrivacyAndPolicy";
@@ -31,7 +34,11 @@ function App() {
 								path="privacy-policy"
 								element={<PrivacyAndPolicy />}
 							/>
-
+							<Route
+								path="single-product/:id"
+								element={<SingleProduct />}
+							/>
+							<Route path="shop" element={<Shop />} />
 							<Route path="login" element={<Login />} />
 							<Route
 								path="reset-password"
@@ -45,7 +52,11 @@ function App() {
 								path="registration"
 								element={<Registration />}
 							/>
-
+							<Route path="shop/search" element={<Shop />} />
+							<Route
+								path="admin-panel"
+								element={<AdminPanel />}
+							/>
 							<Route path="*" element={<NotFound />} />
 						</Routes>
 					</UserProvider>

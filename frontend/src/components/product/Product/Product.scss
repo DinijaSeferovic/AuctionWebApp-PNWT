@@ -1,0 +1,40 @@
+@import "../../../_variables.scss";
+
+.product {
+	width: 262px;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	&_name {
+		font-family: $Lato;
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 29px;
+		letter-spacing: 0.84px;
+		color: $dark;
+
+		&_link {
+			text-decoration: none;
+			color: $dark;
+		}
+	}
+
+	&_price {
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 19px;
+		letter-spacing: 0.84px;
+		color: $text;
+		margin-bottom: 10px;
+
+		&_amount {
+			color: $primary;
+			font-weight: 600;
+			margin-left: 10px;
+		}
+	}
+}

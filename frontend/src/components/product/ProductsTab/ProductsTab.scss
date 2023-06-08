@@ -1,0 +1,13 @@
+@import "../../../_variables.scss";
+
+.product_container {
+	width: 1120px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 20px;
+	margin-bottom: 80px;
+
+	li {
+		list-style: none;
+	}
+}

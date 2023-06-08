@@ -1,15 +1,15 @@
 package ba.tim10.items.repositories;
 
 import ba.tim10.items.domains.Subcategory;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface SubcategoryRepository extends CrudRepository<Subcategory, UUID> {
-
-    List<Subcategory> findByName(String name);
-
-    Optional<Subcategory> findById(UUID id);
+@Repository
+public interface SubcategoryRepository extends JpaRepository<Subcategory, Integer> {
+    List<Subcategory> findByCategoryId(UUID id);
 }

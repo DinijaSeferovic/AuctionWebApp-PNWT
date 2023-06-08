@@ -1,23 +1,41 @@
 package ba.tim10.items.controllers;
 
-import ba.tim10.items.domains.Category;
-import ba.tim10.items.repositories.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import ba.tim10.items.dto.CategoryDTO;
+import ba.tim10.items.services.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-import java.util.UUID;
+import java.util.List;
 
 @RestController
 @ResponseBody
-@RequestMapping("/item/category")
+@CrossOrigin(origins = "*")
+@RequestMapping("/item/categories")
 public class CategoryController {
 
-    @Autowired
-    private CategoryRepository repository;
+    private final CategoryService categoryService;
 
-    @GetMapping("/{id}")
-    public Optional<Category> findById(@PathVariable UUID id) {
-        return repository.findById(id);
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
+    /**
+     * Calls service method to get main categories from database
+     *
+     * @return list of {@link CategoryDTO}
+     */
+    @GetMapping("/main")
+    public List<CategoryDTO> getMainCategories() {
+        return categoryService.getMainCategories();
+    }
+
+    /**
+     * Calls service method to get all categories from database
+     *
+     * @return list of {@link CategoryDTO}
+     */
+    @GetMapping
+    public List<CategoryDTO> getCategories() {
+        return categoryService.getCategories();
     }
 }

@@ -41,10 +41,7 @@ const Login = () => {
 				});
 			})
 			.catch((error) => {
-				if (
-					error.response.data &&
-					error.response.data.includes("credentials")
-				) {
+				if (error.response.data) {
 					setErrorMessages({
 						email: errorMessages.email,
 						password: "Incorrect password.",

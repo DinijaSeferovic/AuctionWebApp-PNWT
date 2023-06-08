@@ -1,23 +1,35 @@
 package ba.tim10.items.controllers;
 
 import ba.tim10.items.domains.Subcategory;
+import ba.tim10.items.dto.SubcategoryDTO;
 import ba.tim10.items.repositories.SubcategoryRepository;
+import ba.tim10.items.services.SubcategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@ResponseBody
-@RequestMapping("/item/subcategory")
+@CrossOrigin(origins = "*")
+@RequestMapping("/item/subcategories")
 public class SubcategoryController {
 
-    @Autowired
-    private SubcategoryRepository repository;
+    private final SubcategoryService subcategoryService;
 
-    @GetMapping("/{id}")
-    public Optional<Subcategory> findById(@PathVariable UUID id) {
-        return repository.findById(id);
+    public SubcategoryController(SubcategoryService subcategoryService) {
+        this.subcategoryService = subcategoryService;
+    }
+
+    /**
+     * Calls service method to get subcategories that have the provided category id
+     *
+     * @param id id of the category
+     * @return list of {@link SubcategoryDTO}
+     */
+    @GetMapping("/categories/{id}")
+    public List<SubcategoryDTO> getSubcategoriesByCategoryId(@PathVariable UUID id) {
+        return subcategoryService.getSubcategoriesByCategoryId(id);
     }
 }

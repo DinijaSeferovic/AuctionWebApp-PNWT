@@ -45,7 +45,6 @@ const Table = ({ products, status }) => {
 							</div>
 						</td>
 						<td>{status !== "sold" && item.timeLeft}</td>
-						<td>{item.bidders}</td>
 						<td>{item.bids}</td>
 						<td>
 							<div>

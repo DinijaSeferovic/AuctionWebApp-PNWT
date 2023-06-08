@@ -1,0 +1,7 @@
+@import "../../_variables.scss";
+
+.container {
+	border-top: 1px solid $secondary;
+	display: flex;
+	flex-direction: row;
+}

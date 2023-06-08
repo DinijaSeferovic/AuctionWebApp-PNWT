@@ -1,44 +1,44 @@
 package ba.tim10.items.domains;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jdk.jfr.Category;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.awt.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
+@Table
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Bid {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @UuidGenerator
+    @Column(nullable = false)
+    @GeneratedValue
     private UUID id;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    @Column
     private Double amount;
 
-    protected Bid() {}
+    @Column
+    private LocalDateTime bidDateTime;
 
-    protected Bid(UUID id, Double amount){
+    public Bid(Product product, Double amount, LocalDateTime bidDateTime) {
+        this.product = product;
         this.amount = amount;
-        this.id = id;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
+        this.bidDateTime = bidDateTime;
     }
 }

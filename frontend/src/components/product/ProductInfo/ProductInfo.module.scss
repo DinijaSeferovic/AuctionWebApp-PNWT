@@ -1,0 +1,82 @@
+@import "../../../_variables.scss";
+
+.info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 32px;
+
+	&_title {
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 32px;
+		line-height: 50px;
+		letter-spacing: 0.85px;
+		color: $darker;
+	}
+
+	&_start {
+		font-family: $Lato;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 20px;
+		color: $primary;
+
+		&_price {
+			font-weight: 700;
+		}
+	}
+
+	&_specs {
+		display: flex;
+		flex-direction: column;
+		align-items: left;
+		padding: 24px 32px;
+		gap: 10px;
+		border: 1px solid $border;
+
+		&_bid,
+		&_bids,
+		&_timer {
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 300;
+			font-size: 16px;
+			line-height: 20px;
+			color: $dark;
+		}
+		&_bid_amount,
+		&_bids_number,
+		&_timer_time {
+			font-weight: 700;
+			color: $primary;
+		}
+	}
+	&_placebid {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 20px;
+
+		&_input {
+			border: 1px solid $secondary;
+			padding-right: 10px;
+		}
+	}
+
+	&_tab {
+		width: 540px;
+		&_details {
+			font-family: $Lato;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 24px;
+			color: $text;
+			margin-bottom: 20px;
+		}
+	}
+}

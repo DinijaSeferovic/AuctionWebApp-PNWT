@@ -1,4 +1,4 @@
-import api from "../utils/api";
+import api from "../utils/apiUser";
 
 const logIn = (email, password) => {
 	return api.post("/login", { email, password }).then((response) => {
