@@ -16,10 +16,10 @@ const Home = () => {
 			</div>
 			<TabContainer size="large">
 				<div label="New Arrivals">
-					<ProductsTab apiProducts={"/products/new-arrivals"} />
+					<ProductsTab apiProducts={"/api/items/new-arrivals"} />
 				</div>
 				<div label="Last Chance">
-					<ProductsTab apiProducts={"/products/last-chance"} />
+					<ProductsTab apiProducts={"/api/items/last-chance"} />
 				</div>
 			</TabContainer>
 		</div>
