@@ -1,65 +1,65 @@
-import api from "../utils/apiItem";
+import api from "../utils/api";
 
 const getProductHighlight = () => {
-	return api.get("/products/highlight");
+	return api.get("/api/items/highlight");
 };
 
 const getProduct = (id) => {
-	return api.get(`/products/${id}`);
+	return api.get(`/api/items/${id}`);
 };
 
 const getProducts = () => {
-	return api.get(`/products`);
+	return api.get(`/api/items`);
 };
 
 const getNewProducts = (page, limit) => {
-	return api.get(`/products/new-arrivals?page=${page}&limit=${limit}`);
+	return api.get(`/api/items/new-arrivals?page=${page}&limit=${limit}`);
 };
 
 const getLastProducts = (page, limit) => {
-	return api.get(`/products/last-chance?page=${page}&limit=${limit}`);
+	return api.get(`/api/items/last-chance?page=${page}&limit=${limit}`);
 };
 
 const getProductSubcategoryCount = (id) => {
-	return api.get(`/products/subcategories/${id}/count`);
+	return api.get(`/api/items/subcategories/${id}/count`);
 };
 
 const getFilteredProducts = (name, categoryId, page, limit) => {
 	if (name && name !== "false" && categoryId) {
 		return api.get(
-			`/products/search?name=${name}&categoryId=${categoryId}&page=${page}&limit=${limit}`
+			`/api/items/search?name=${name}&categoryId=${categoryId}&page=${page}&limit=${limit}`
 		);
 	} else if (name && name !== "false") {
 		return api.get(
-			`/products/search?name=${name}&page=${page}&limit=${limit}`
+			`/api/items/search?name=${name}&page=${page}&limit=${limit}`
 		);
 	} else if (categoryId) {
 		return api.get(
-			`/products/search?categoryId=${categoryId}&page=${page}&limit=${limit}`
+			`/api/items/search?categoryId=${categoryId}&page=${page}&limit=${limit}`
 		);
 	} else {
-		return api.get(`/products/new-arrivals?page=${page}&limit=${limit}`);
+		return api.get(`/api/items/new-arrivals?page=${page}&limit=${limit}`);
 	}
 };
 
 const getSuggestions = (search) => {
-	return api.get(`/products/spell-check?search=${search}`);
+	return api.get(`/api/items/spell-check?search=${search}`);
 };
 
 const updatePaidStatus = (isPaid, product) => {
-	return api.put(`/products/${product}/paid-status`, isPaid);
+	return api.put(`/api/items/${product}/paid-status`, isPaid);
 };
 
 const updateBuyer = (user, product) => {
-	return api.put(`/products/${product}/update-buyer?user=${user}`);
+	return api.put(`/api/items/${product}/update-buyer?user=${user}`);
 };
 
 const getProductRow = (page, limit, status) => {
-	return api.get(`/products/rows/${status}?page=${page}&limit=${limit}`);
+	return api.get(`/api/items/rows/${status}?page=${page}&limit=${limit}`);
 };
 
 const getProductsCount = (status) => {
-	return api.get(`/products/${status}/count`);
+	return api.get(`/api/items/${status}/count`);
 };
 
 export default {

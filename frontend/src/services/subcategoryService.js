@@ -1,7 +1,7 @@
-import api from "../utils/apiItem";
+import api from "../utils/api";
 
 const getSubcategories = (id) => {
-	return api.get(`/subcategories/categories/${id}`);
+	return api.get(`/api/items/subcategories/categories/${id}`);
 };
 
 export default { getSubcategories };
