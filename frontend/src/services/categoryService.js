@@ -1,11 +1,11 @@
-import api from "../utils/apiItem";
+import api from "../utils/api";
 
 const getMainCategories = () => {
-	return api.get("/categories/main");
+	return api.get("/api/items/categories/main");
 };
 
 const getCategories = () => {
-	return api.get("/categories");
+	return api.get("/api/items/categories");
 };
 
 export default { getMainCategories, getCategories };
