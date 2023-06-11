@@ -1,7 +1,9 @@
 package ba.tim10.users;
 
+import ba.tim10.users.config.jwt.JwtUtils;
 import ba.tim10.users.controllers.UserController;
 import ba.tim10.users.domains.User;
+import ba.tim10.users.services.RoleService;
 import ba.tim10.users.services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -36,6 +40,18 @@ public class UserWebMockTest {
     @MockBean
     private UserService userService;
 
+    @MockBean
+    private RoleService roleService;
+
+    @MockBean
+    private AuthenticationManager authenticationManager;
+
+    @MockBean
+    private PasswordEncoder encoder;
+
+    @MockBean
+    private JwtUtils jwtUtils;
+
     @Test
     public void contextLoads() {
     }
@@ -46,7 +62,7 @@ public class UserWebMockTest {
         List<User> users = Arrays.asList(new User("john@example.com", "John"), new User("jane@example.com", "Jane"));
         given(userService.findAll()).willReturn(users);
 
-        mockMvc.perform(get("/user"))
+        mockMvc.perform(get("/api/users"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{\"email\":\"john@example.com\", \"password\": \"John\"}," +
                         "{\"email\":\"jane@example.com\", \"password\": \"Jane\"}]"));
@@ -57,7 +73,7 @@ public class UserWebMockTest {
         User user = new User((UUID.fromString("f53d2c7b-dcae-46ce-ba1e-f74b7f7070df")), "john@example.com", "John");
         given(userService.findById(UUID.fromString("f53d2c7b-dcae-46ce-ba1e-f74b7f7070df"))).willReturn(user);
 
-        mockMvc.perform(get("/user/f53d2c7b-dcae-46ce-ba1e-f74b7f7070df"))
+        mockMvc.perform(get("/api/users/f53d2c7b-dcae-46ce-ba1e-f74b7f7070df"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"id\":\"f53d2c7b-dcae-46ce-ba1e-f74b7f7070df\",\"email\":\"john@example.com\", \"password\": \"John\"}"));
     }
@@ -79,7 +95,7 @@ public class UserWebMockTest {
         String requestJson = objectMapper.writeValueAsString(newUser);
         String expectedJson = objectMapper.writeValueAsString(savedUser);
 
-        mockMvc.perform(post("/user")
+        mockMvc.perform(post("/api/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isCreated())
@@ -101,7 +117,7 @@ public class UserWebMockTest {
         }).when(userService).changePassword(email, password);
 
         mockMvc.perform(MockMvcRequestBuilders
-                        .put("/user/change-password")
+                        .put("/api/users/change-password")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"email\": \"" + email + "\", \"password\": \"" + password + "\"}"))
                 .andExpect(status().isOk())
