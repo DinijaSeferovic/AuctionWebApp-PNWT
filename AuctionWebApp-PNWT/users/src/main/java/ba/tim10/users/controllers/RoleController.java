@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/roles")
+@RequestMapping("/api/users/roles")
 public class RoleController {
 
     private final RoleService roleService;

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/item/images")
+@RequestMapping("/api/items")
 public class ImageController {
 
     private final ImageService imageService;
@@ -24,7 +24,7 @@ public class ImageController {
      * @param id id of the product
      * @return list of {@link ImageDTO}
      */
-    @GetMapping("/{id}")
+    @GetMapping("/api/items/images/{id}")
     public List<ImageDTO> getImagesByProduct(@PathVariable UUID id) {
         return imageService.getImagesByProductId(id);
     }

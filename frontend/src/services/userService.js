@@ -1,15 +1,17 @@
-import api from "../utils/apiUser";
+import api from "../utils/api";
 
 const logIn = (email, password) => {
-	return api.post("/login", { email, password }).then((response) => {
-		return response.data;
-	});
+	return api
+		.post("api/users/auth/login", { email, password })
+		.then((response) => {
+			return response.data;
+		});
 };
 
 const register = (firstName, lastName, email, password) => {
 	const roles = ["user"];
 	return api
-		.post("/register", {
+		.post("api/users/auth/register", {
 			firstName,
 			lastName,
 			email,
@@ -22,21 +24,25 @@ const register = (firstName, lastName, email, password) => {
 };
 
 const getUserByToken = (token) => {
-	return api.get(`/user?token=${token}`).then((response) => {
+	return api.get(`api/users/user?token=${token}`).then((response) => {
 		return response.data;
 	});
 };
 
 const sendResetEmail = (email) => {
-	return api.post(`/send-reset-email?email=${email}`).then((response) => {
-		return response.data;
-	});
+	return api
+		.post(`api/users/send-reset-email?email=${email}`)
+		.then((response) => {
+			return response.data;
+		});
 };
 
 const changePassword = (email, password) => {
-	return api.put("/change-password", { email, password }).then((response) => {
-		return response.data;
-	});
+	return api
+		.put("api/users/change-password", { email, password })
+		.then((response) => {
+			return response.data;
+		});
 };
 
 export default {

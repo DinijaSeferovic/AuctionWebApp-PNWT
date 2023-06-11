@@ -17,7 +17,7 @@ public class BidController {
     @Autowired
     private BidRepository repository;
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/items/bid/{id}")
     public Optional<Bid> findById(@PathVariable UUID id) {
         return repository.findById(id);
     }

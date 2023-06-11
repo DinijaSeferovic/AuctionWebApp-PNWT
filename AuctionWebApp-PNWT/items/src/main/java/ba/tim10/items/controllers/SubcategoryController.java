@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/item/subcategories")
+@RequestMapping("/api/items")
 public class SubcategoryController {
 
     private final SubcategoryService subcategoryService;
@@ -28,7 +28,7 @@ public class SubcategoryController {
      * @param id id of the category
      * @return list of {@link SubcategoryDTO}
      */
-    @GetMapping("/categories/{id}")
+    @GetMapping("/subcategories/categories/{id}")
     public List<SubcategoryDTO> getSubcategoriesByCategoryId(@PathVariable UUID id) {
         return subcategoryService.getSubcategoriesByCategoryId(id);
     }

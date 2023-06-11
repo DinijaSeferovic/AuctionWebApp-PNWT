@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @ResponseBody
 @CrossOrigin(origins = "*")
-@RequestMapping("/item/categories")
+@RequestMapping("/api/items")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -24,7 +24,7 @@ public class CategoryController {
      *
      * @return list of {@link CategoryDTO}
      */
-    @GetMapping("/main")
+    @GetMapping("/categories/main")
     public List<CategoryDTO> getMainCategories() {
         return categoryService.getMainCategories();
     }
