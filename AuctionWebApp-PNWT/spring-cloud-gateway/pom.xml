@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-cloud-gateway</name>
     <description>spring-cloud-gateway</description>
+    <packaging>jar</packaging>
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.2</spring-cloud.version>
@@ -54,6 +55,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
