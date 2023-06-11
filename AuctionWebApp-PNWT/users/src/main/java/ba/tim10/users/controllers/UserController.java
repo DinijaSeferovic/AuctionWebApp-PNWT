@@ -30,7 +30,7 @@ import javax.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/auth")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
@@ -87,7 +87,7 @@ public class UserController {
      * @param loginRequest user information that need authentication
      * @return {@link JwtResponseDTO} with authenticated user information
      */
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LogInDTO loginRequest) {
         if (validateData(loginRequest) != null) {
             return validateData(loginRequest);
@@ -115,7 +115,7 @@ public class UserController {
      * @param registrationRequest user information that need registration
      * @return {@link ResponseEntity} return value of authenticateUser method
      */
-    @PostMapping("/register")
+    @PostMapping("/auth/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterDTO registrationRequest) {
         if (validateData(registrationRequest) != null) {
             return validateData(registrationRequest);

@@ -68,7 +68,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
      * @return token from the header if found
      */
     private String parseJwt(HttpServletRequest request) {
-        String headerAuth = request.getHeader("Authorization");
+        String headerAuth = request.getHeader("X-Authorization");
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
             return headerAuth.substring(7);
         }

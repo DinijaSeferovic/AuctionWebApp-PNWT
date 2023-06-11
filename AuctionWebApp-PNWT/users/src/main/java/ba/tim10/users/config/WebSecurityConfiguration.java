@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -27,6 +28,9 @@ public class WebSecurityConfiguration {
 
     @Autowired
     private JwtEntryPoint unauthorizedHandler;
+
+    @Autowired
+    Environment environment;
 
     @Bean
     public JwtTokenFilter jwtTokenFilter() {
@@ -58,11 +62,12 @@ public class WebSecurityConfiguration {
         authenticationManager = authenticationManagerBuilder.build();
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/api/users/auth/**").permitAll()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authenticationManager(authenticationManager);
+
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class).exceptionHandling().authenticationEntryPoint(unauthorizedHandler);
         return http.build();
     }
