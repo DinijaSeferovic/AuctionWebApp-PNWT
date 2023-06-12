@@ -21,7 +21,7 @@ const getLastProducts = (page, limit) => {
 };
 
 const getProductSubcategoryCount = (id) => {
-	return api.get(`/api/items/subcategories/${id}/count`);
+	return api.get(`/api/items/product/subcategories/${id}/count`);
 };
 
 const getFilteredProducts = (name, categoryId, page, limit) => {

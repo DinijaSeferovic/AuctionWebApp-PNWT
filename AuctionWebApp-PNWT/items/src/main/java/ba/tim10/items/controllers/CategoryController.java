@@ -34,7 +34,7 @@ public class CategoryController {
      *
      * @return list of {@link CategoryDTO}
      */
-    @GetMapping
+    @GetMapping("/categories")
     public List<CategoryDTO> getCategories() {
         return categoryService.getCategories();
     }

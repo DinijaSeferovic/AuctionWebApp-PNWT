@@ -109,7 +109,7 @@ public class ProductController {
      * @param limit number of products per page
      * @return list of {@link ProductDTO}
      */
-    @GetMapping("/categories/{id}")
+    @GetMapping("/product/categories/{id}")
     public List<ProductDTO> getProductsByCategory(@PathVariable UUID id, @RequestParam int page, @RequestParam int limit) {
         return productService.getProductsByCategory(id, page, limit);
     }
@@ -120,7 +120,7 @@ public class ProductController {
      * @param id subcategory id
      * @return count
      */
-    @GetMapping("/subcategories/{id}/count")
+    @GetMapping("/product/subcategories/{id}/count")
     public long getProductCountBySubcategory(@PathVariable UUID id) {
         return productService.getProductCountBySubcategory(id);
     }
